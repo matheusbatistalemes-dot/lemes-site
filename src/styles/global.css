@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary text-primary-dark font-sans antialiased selection:bg-primary-gold selection:text-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-premium {
+    @apply px-6 py-3 rounded-full transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 font-medium;
+  }
+
+  .btn-primary {
+    @apply btn-premium bg-primary-dark text-primary hover:bg-primary-graphite;
+  }
+
+  .btn-outline {
+    @apply btn-premium border border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-primary;
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration) linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safe Area for iPhone */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
